@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --green-main: #1c3d2b;
+    --off-white: #f9f0df;
+    --yellow: #daaa39;
+    --color-primary: var(--green-main);
+    --color-secondary: var(--yellow);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground) --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-primary {
+    background: var(--color-primary);
+    color: black;
+}
+
+.bg-secondary {
+    background: var(--color-secondary);
+    color: black;
+}
+
+.bg-offwhite {
+    background: var(--off-white);
+    color: #0a0a0a;
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.text-offwhite {
+    color: var(--off-white);
+}
+
+.text-white {
+    color: var(--foreground);
+}
+
+.animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
 }
