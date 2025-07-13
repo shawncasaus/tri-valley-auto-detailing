@@ -4,10 +4,12 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --green-main: #1c3d2b;
+    --green-alt: #003314;
     --off-white: #f9f0df;
     --yellow: #daaa39;
     --color-primary: var(--green-main);
     --color-secondary: var(--yellow);
+    --color-primary-dark: var(--green-alt);
 }
 
 @theme inline {
@@ -45,6 +47,10 @@ body {
     color: black;
 }
 
+.bg-primary-dark {
+    background-color: var(--green-alt);
+}
+
 .bg-secondary {
     background: var(--color-secondary);
     color: black;
@@ -53,6 +59,88 @@ body {
 .bg-offwhite {
     background: var(--off-white);
     color: #0a0a0a;
+}
+
+.border-primary {
+    border: 1px solid var(--color-primary);
+}
+
+.border-secondary {
+    border: 1px solid var(--color-secondary);
+}
+
+@keyframes neonTextGlow {
+    0% {
+        text-shadow:
+            0 0 4px rgba(255, 255, 102, 0.4),
+            0 0 8px rgba(255, 255, 102, 0.5),
+            0 0 12px rgba(255, 255, 102, 0.6);
+    }
+    50% {
+        text-shadow:
+            0 0 6px rgba(255, 255, 150, 0.6),
+            0 0 12px rgba(255, 255, 150, 0.7),
+            0 0 20px rgba(255, 255, 180, 0.8);
+    }
+    100% {
+        text-shadow:
+            0 0 4px rgba(255, 255, 102, 0.4),
+            0 0 8px rgba(255, 255, 102, 0.5),
+            0 0 12px rgba(255, 255, 102, 0.6);
+    }
+}
+
+.text-glow-animated {
+    animation: neonTextGlow 2.5s infinite ease-in-out;
+    color: #fffbe6;
+}
+
+@keyframes glowHue {
+    0% {
+        filter: hue-rotate(0deg);
+        box-shadow: 0 0 8px 2px rgba(255, 255, 102, 0.75);
+    }
+    50% {
+        filter: hue-rotate(60deg);
+        box-shadow: 0 0 12px 3px rgba(255, 255, 150, 0.85);
+    }
+    100% {
+        filter: hue-rotate(0deg);
+        box-shadow: 0 0 8px 2px rgba(255, 255, 102, 0.75);
+    }
+}
+
+.border-glow-animated {
+    border: 1.8px solid #ffeb3b;
+    box-shadow: 0 0 8px 2px rgba(255, 255, 102, 0.75);
+    outline: none;
+    animation: glowHue 2s infinite ease-in-out;
+}
+
+input.border-focus-secondary:focus,
+select.border-focus-secondary:focus,
+textarea.border-focus-secondary:focus {
+    border: 1px solid var(--color-secondary);
+    box-shadow: 0 0 0 1.2px rgba(255, 221, 0, 0.4);
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    outline: none;
 }
 
 .text-primary {

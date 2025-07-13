@@ -34,7 +34,7 @@ export default function Reviews() {
               muted
               loop
               playsInline
-              className="rounded-xl aspect-[9/16] w-full object-cover"
+              className="rounded-4xl aspect-[9/16] w-full object-cover"
             >
               <source src="/media/reviews-loop.mp4" type="video/mp4" />
               Your browser does not support the video tag.

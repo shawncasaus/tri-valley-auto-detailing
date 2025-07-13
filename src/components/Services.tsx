@@ -54,12 +54,12 @@ export default function Services() {
 
   return (
     <section id="services" className="py-16 bg-white text-center">
-      <h3 className="text-4xl font-bold mb-8 text-primary">Our Services</h3>
+      <h3 className="text-5xl font-bold mb-8 text-primary">Our Services</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {services.map((s, i) => (
           <motion.div
             key={i}
-            className="relative p-6 m-2 rounded-lg shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between min-h-[240px]"
+            className="relative p-6 m-2 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between min-h-[240px]"
             style={cardStyle(s.image)}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

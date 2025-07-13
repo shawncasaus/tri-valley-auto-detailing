@@ -16,11 +16,13 @@ export default function ContactForm() {
     vehicle: "",
     description: "",
   });
+
   type AvailabilitySlot = {
     day: string;
     start: string;
     end: string;
   };
+
   const [status, setStatus] = useState("");
   const [availability, setAvailability] = useState<AvailabilitySlot[]>([]);
 
@@ -60,7 +62,7 @@ export default function ContactForm() {
       id="contact"
       className="relative py-16 bg-white px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      <div className="absolute inset-4 sm:inset-6 lg:inset-8 z-0 rounded-4xl overflow-hidden">
+      <div className="absolute inset-6 sm:inset-6 lg:inset-10 z-0 rounded-4xl overflow-hidden">
         <Image
           src="/images/contact-background.jpg"
           alt="Contact background"
@@ -71,20 +73,20 @@ export default function ContactForm() {
         <div className="absolute inset-0 bg-black" style={{ opacity: "80%" }} />
       </div>
       <div className="relative z-10">
-        <h3 className="text-3xl font-bold mb-8 text-center text-offwhite">
+        <h3 className="text-4xl font-bold mb-8 text-center text-secondary">
           Get In Touch
         </h3>
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto bg-white p-8 rounded-4xl shadow-md space-y-6"
+          className="max-w-2xl mx-auto bg-offwhite p-8 rounded-4xl shadow-md space-y-6 border-2 border-glow-animated"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input
               type="text"
               required
               placeholder="First Name"
-              className="border p-3 rounded"
+              className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg"
               value={form.firstName}
               onChange={(e) => setForm({ ...form, firstName: e.target.value })}
             />
@@ -92,7 +94,7 @@ export default function ContactForm() {
               type="text"
               required
               placeholder="Last Name"
-              className="border p-3 rounded"
+              className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg"
               value={form.lastName}
               onChange={(e) => setForm({ ...form, lastName: e.target.value })}
             />
@@ -103,21 +105,21 @@ export default function ContactForm() {
               type="email"
               required
               placeholder="Email"
-              className="border p-3 rounded"
+              className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
             <input
               type="tel"
               placeholder="Phone Number"
-              className="border p-3 rounded"
+              className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg"
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
             />
           </div>
 
           <div className="space-y-4">
-            <label className="font-medium text-sm text-gray-700">
+            <label className="font-medium text-sm text-primary mt-4 mb-2">
               Location of vehicle for detail
             </label>
 
@@ -125,8 +127,8 @@ export default function ContactForm() {
               required
               type="text"
               placeholder="Street Address"
-              className="w-full border p-2 rounded"
-              value={form.street || ""}
+              className="w-full border-primary border-focus-secondary focus:ring-0 focus:outline-none p-2 rounded-xl bg-white shadow-lg"
+              value={form.street}
               onChange={(e) => setForm({ ...form, street: e.target.value })}
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -134,16 +136,16 @@ export default function ContactForm() {
                 required
                 type="text"
                 placeholder="City"
-                className="w-full border p-2 rounded"
-                value={form.city || ""}
+                className="w-full border-primary border-focus-secondary focus:ring-0 focus:outline-none p-2 rounded-xl bg-white shadow-lg"
+                value={form.city}
                 onChange={(e) => setForm({ ...form, city: e.target.value })}
               />
               <input
                 required
                 type="text"
                 placeholder="State"
-                className="w-full border p-2 rounded"
-                value={form.state || ""}
+                className="w-full border-primary border-focus-secondary focus:ring-0 focus:outline-none p-2 rounded-xl bg-white shadow-lg"
+                value={form.state}
                 onChange={(e) => setForm({ ...form, state: e.target.value })}
               />
             </div>
@@ -151,24 +153,24 @@ export default function ContactForm() {
               required
               type="text"
               placeholder="ZIP / Postal Code"
-              className="w-full border p-2 rounded"
-              value={form.zip || ""}
+              className="w-full border-primary border-focus-secondary focus:ring-0 focus:outline-none p-2 rounded-xl bg-white shadow-lg"
+              value={form.zip}
               onChange={(e) => setForm({ ...form, zip: e.target.value })}
             />
           </div>
 
           <div className="space-y-4">
-            <label className="font-medium text-sm text-gray-700">
+            <label className="font-medium text-sm text-gray-700font-medium text-sm text-primary mt-4 mb-2">
               Availability
             </label>
             {availability.map((slot, index) => (
               <div
                 key={index}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center relative bg-white p-4 rounded"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center relative bg-white border-primary p-4 rounded-0 shadow-lg"
               >
                 <select
                   required
-                  className="border p-2 rounded"
+                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-2 rounded-xl shadow-lg"
                   value={slot.day}
                   onChange={(e) => updateSlot(index, "day", e.target.value)}
                 >
@@ -190,14 +192,14 @@ export default function ContactForm() {
                 <input
                   required
                   type="time"
-                  className="border p-2 rounded"
+                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-2 rounded-xl shadow-lg"
                   value={slot.start}
                   onChange={(e) => updateSlot(index, "start", e.target.value)}
                 />
                 <input
                   required
                   type="time"
-                  className="border p-2 rounded"
+                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-2 rounded-xl shadow-lg"
                   value={slot.end}
                   onChange={(e) => updateSlot(index, "end", e.target.value)}
                 />
@@ -206,7 +208,7 @@ export default function ContactForm() {
                   <button
                     type="button"
                     onClick={() => removeAvailabilitySlot(index)}
-                    className="absolute -top-2 -right-2 text-red-500 text-sm bg-white rounded-full px-2 py-0.5 shadow"
+                    className="absolute -top-2 -right-2 text-red-500 text-sm bg-white rounded-full px-2 py-0.5 shadow-lg"
                   >
                     ✕
                   </button>
@@ -217,16 +219,16 @@ export default function ContactForm() {
             <button
               type="button"
               onClick={addAvailabilitySlot}
-              className="text-blue-600 text-sm mt-2 underline"
+              className="text-green-500 text-sm bg-white rounded-full px-2 py-0.5 shadow-lg m-2"
             >
-              + Add another time slot
+              +
             </button>
           </div>
 
           <input
             type="text"
             placeholder="Vehicle Make and Model"
-            className="w-full border p-3 rounded"
+            className="w-full border-primary border-focus-secondary focus:ring-0 focus:outline-none bg-white p-3 rounded-2xl shadow-lg"
             value={form.vehicle}
             onChange={(e) => setForm({ ...form, vehicle: e.target.value })}
           />
@@ -234,15 +236,12 @@ export default function ContactForm() {
           <textarea
             required
             placeholder="Describe the service you're looking for"
-            className="w-full border p-3 rounded min-h-[140px]"
+            className="w-full border-primary border-focus-secondary focus:ring-0 focus:outline-none bg-white p-3 rounded-2xl shadow-lg min-h-[140px]"
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
           />
 
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
-          >
+          <button type="submit" className="btn-primary">
             Send Message
           </button>
 
