@@ -1,12 +1,14 @@
+import ImageCard from "./ImageCard";
+
 export default function GalleryShowcase() {
   return (
     <section className="mb-12">
-      <h2 className="text-2xl font-bold mb-4">Featured Detail</h2>
-      <div className="aspect-video bg-gray-300 rounded-xl shadow-md mb-4" />
-      <p className="text-gray-700">
-        This was one of our most intensive details. The vehicle needed a full
-        paint correction, interior shampoo, and ceramic coating...
-      </p>
+      <ImageCard
+        title="E36 M3"
+        imageUrl="/images/showcase.jpg"
+        description1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae leo eu nulla gravida tincidunt. Curabitur tincidunt, odio sit amet pretium varius, lacus sem euismod nulla, sit amet dignissim tortor nulla a est."
+        description2="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas fringilla, nibh sed pulvinar cursus, enim arcu vestibulum est, non condimentum purus sapien a erat."
+      />
     </section>
   );
 }
