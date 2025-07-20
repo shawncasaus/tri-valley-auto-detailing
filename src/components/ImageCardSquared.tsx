@@ -11,6 +11,8 @@ type ImageCardSquaredProps = {
   imageUrl: string;
   width?: string;
   height?: string;
+  background?: string;
+  blackText?: boolean;
 };
 
 export default function ImageCardSquared({
@@ -20,8 +22,12 @@ export default function ImageCardSquared({
   imageUrl,
   width = "w-full",
   height = "h-[360px] sm:h-[500px] md:h-[600px]",
+  background = "bg-white",
+  blackText = true,
 }: ImageCardSquaredProps) {
   const [isHovered, setIsHovered] = useState(false);
+
+  const textClass = blackText ? "text-gray-700" : "text-white";
 
   return (
     <div
@@ -29,12 +35,14 @@ export default function ImageCardSquared({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute inset-0 bg-white flex flex-col items-center justify-center p-6 text-center z-0">
-        <h2 className="text-3xl font-bold text-primary m-4">{title}</h2>
-        <p className="text-gray-700 text-sm max-w-xl mb-2">{description1}</p>
-        <p className="text-gray-700 text-sm max-w-xl mb-2">{description1}</p>
+      <div
+        className={`absolute inset-0 ${background} flex flex-col items-center justify-center p-6 text-center z-0`}
+      >
+        <h2 className={`text-3xl font-bold m-4 ${textClass}`}>{title}</h2>
+        <p className={`text-sm max-w-xl mb-2 ${textClass}`}>{description1}</p>
+        <p className={`text-sm max-w-xl mb-2 ${textClass}`}>{description1}</p>
         {description2 && (
-          <p className="text-gray-700 text-sm max-w-xl">{description2}</p>
+          <p className={`text-sm max-w-xl ${textClass}`}>{description2}</p>
         )}
       </div>
 
