@@ -40,7 +40,6 @@ export default function ImageCardSquared({
       >
         <h2 className={`text-3xl font-bold m-4 ${textClass}`}>{title}</h2>
         <p className={`text-sm max-w-xl mb-2 ${textClass}`}>{description1}</p>
-        <p className={`text-sm max-w-xl mb-2 ${textClass}`}>{description1}</p>
         {description2 && (
           <p className={`text-sm max-w-xl ${textClass}`}>{description2}</p>
         )}

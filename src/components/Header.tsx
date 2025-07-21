@@ -20,7 +20,7 @@ export default function Header() {
           <Link href="/gallery" className="hover:underline text-secondary">
             Gallery
           </Link>
-          <Link href="#reviews" className="hover:underline text-secondary">
+          <Link href="/about" className="hover:underline text-secondary">
             About
           </Link>
           <Link href="#contact" className="hover:underline text-secondary">

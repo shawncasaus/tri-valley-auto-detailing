@@ -53,32 +53,34 @@ export default function Services() {
   });
 
   return (
-    <section id="services" className="py-16 bg-white text-center">
-      <h3 className="text-5xl font-bold mb-8 text-primary">Our Services</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        {services.map((s, i) => (
-          <motion.div
-            key={i}
-            className="relative p-6 m-2 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between min-h-[240px]"
-            style={cardStyle(s.image)}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.6, delay: i * 0.1, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-lg"></div>
-            <div className="relative z-10 flex flex-col items-center justify-center h-full text-left">
-              <h4 className="text-2xl text-offwhite font-semibold mb-2">
-                {s.title}
-              </h4>
-              <ul className="text-white list-disc list-inside">
-                {s.points.map((point, idx) => (
-                  <li key={idx}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        ))}
+    <section id="services" className="py-16 bg-white text-center px-4 sm:px-8">
+      <div className="max-w-screen-xl mx-auto">
+        <h3 className="text-5xl font-bold mb-8 text-primary">Our Services</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {services.map((s, i) => (
+            <motion.div
+              key={i}
+              className="relative p-6 m-2 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between min-h-[300px] sm:min-h-[340px]"
+              style={cardStyle(s.image)}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.6, delay: i * 0.1, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-lg"></div>
+              <div className="relative z-10 flex flex-col items-center justify-center h-full text-left">
+                <h4 className="text-2xl text-offwhite font-semibold mb-2">
+                  {s.title}
+                </h4>
+                <ul className="text-white list-disc list-inside">
+                  {s.points.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
