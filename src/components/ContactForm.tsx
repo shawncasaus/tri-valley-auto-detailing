@@ -60,9 +60,9 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="relative py-16 bg-white px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative h-screen w-full overflow-hidden bg-white"
     >
-      <div className="absolute inset-6 sm:inset-6 lg:inset-10 z-0 rounded-4xl overflow-hidden">
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/contact-background.jpg"
           alt="Contact background"
@@ -70,17 +70,17 @@ export default function ContactForm() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black" style={{ opacity: "80%" }} />
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       </div>
-      <div className="relative z-10">
-        <h3 className="text-4xl font-bold mb-8 text-center text-secondary">
-          Get In Touch
-        </h3>
 
+      <div className="relative z-10 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8">
         <form
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto bg-offwhite p-8 rounded-4xl shadow-md space-y-6 border-2 border-glow-animated"
+          className="w-full max-w-2xl bg-offwhite p-8 rounded-4xl shadow-md space-y-6 border-2"
         >
+          <h3 className="text-4xl font-bold text-center text-primary mb-4">
+            Get In Touch
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input
               type="text"

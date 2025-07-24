@@ -91,8 +91,11 @@ body {
 }
 
 .text-glow-animated {
-    animation: neonTextGlow 2.5s infinite ease-in-out;
     color: #fffbe6;
+    text-shadow:
+        0 0 5px #fffbe6,
+        0 0 10px #ffd700,
+        0 0 20px #ffd700;
 }
 
 @keyframes glowHue {

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 type ImageCardSquaredProps = {
   title: string;
@@ -25,16 +26,26 @@ export default function ImageCardSquared({
   background = "bg-white",
   blackText = true,
 }: ImageCardSquaredProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isToggled, setIsToggled] = useState(false);
 
   const textClass = blackText ? "text-gray-700" : "text-white";
 
   return (
     <div
       className={`relative ${width} ${height} shadow-md overflow-hidden group mb-12`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
+      <button
+        onClick={() => setIsToggled((prev) => !prev)}
+        className="absolute top-3 right-3 z-20 p-1 rounded-full bg-white/80 hover:bg-white"
+        aria-label="Toggle Image View"
+      >
+        <ChevronDown
+          className={`w-5 h-5 transition-transform ${
+            isToggled ? "rotate-180 text-blue-600" : "text-gray-700"
+          }`}
+        />
+      </button>
+
       <div
         className={`absolute inset-0 ${background} flex flex-col items-center justify-center p-6 text-center z-0`}
       >
@@ -46,8 +57,16 @@ export default function ImageCardSquared({
       </div>
 
       <motion.div
+        initial={{
+          width: "100%",
+          height: "100%",
+          borderRadius: "0rem",
+          translateX: "0%",
+          translateY: "0%",
+          opacity: 1,
+        }}
         animate={
-          isHovered
+          isToggled
             ? {
                 width: "6rem",
                 height: "6rem",

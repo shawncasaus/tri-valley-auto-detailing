@@ -60,11 +60,11 @@ export default function Services() {
           {services.map((s, i) => (
             <motion.div
               key={i}
-              className="relative p-6 m-2 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between min-h-[300px] sm:min-h-[340px]"
+              className="relative p-6 m-2 rounded-2xl shadow-sm hover:shadow-md overflow-hidden flex flex-col justify-between min-h-[300px] sm:min-h-[340px]"
               style={cardStyle(s.image)}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.6, delay: i * 0.1, ease: "easeOut" }}
+              transition={{ duration: 1.6, delay: i * 0.1, ease: "anticipate" }}
               viewport={{ once: true }}
             >
               <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-lg"></div>

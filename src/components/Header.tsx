@@ -6,13 +6,13 @@ import Image from "next/image";
 export default function Header() {
   return (
     <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-6xl bg-primary/80 backdrop-blur-md text-white rounded-2xl shadow-xl px-6 py-2">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mt-5 mb-5 opacity-80">
         <Link href="/#">
           <Image
-            src="/logo.png"
+            src="/logo-alt.png"
             alt="Logo"
-            width={80}
-            height={80}
+            width={200}
+            height={58}
             className="rounded-full cursor-pointer"
           />
         </Link>

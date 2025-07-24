@@ -1,4 +1,5 @@
 import ImageCardSquared from "./ImageCardSquared";
+import { motion } from "framer-motion";
 
 export default function GalleryShowcase() {
   return (

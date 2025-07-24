@@ -38,7 +38,6 @@ export default function GalleryCollage() {
           />
         </div>
 
-        {/* Inserted TextHero block here */}
         <div className="col-span-1 row-span-2 h-full flex items-center justify-center bg-white p-6 overflow-hidden">
           <TextHero className="text-left whitespace-pre-line">
             {"A CURATED\nGLIMPSE\nINTO\nOUR\nCRAFT"}
