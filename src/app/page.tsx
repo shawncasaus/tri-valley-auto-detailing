@@ -9,7 +9,9 @@ export default function Home() {
       <Hero />
       <Services />
       <Reviews />
-      <ContactForm />
+      <section id="contact">
+        <ContactForm />
+      </section>
     </main>
   );
 }

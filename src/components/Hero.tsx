@@ -34,10 +34,15 @@ export default function Hero() {
 
         <div className="w-1/2 flex flex-col gap-4 items-center sm:items-start justify-center text-center sm:text-left px-4">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-glow-animated">
-            We are not a Car Wash...
+            MORE THAN
           </h1>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-glow-animated">
-            We are Detailers!
+            A CAR WASH...
+          </h1>
+          <br />
+          <br />
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-glow-animated">
+            WE&apos;RE DETAILERS!
           </h1>
         </div>
       </div>

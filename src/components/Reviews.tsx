@@ -49,13 +49,13 @@ export default function Reviews() {
           <h3 className="text-4xl font-bold mb-6 text-center text-primary">
             What Our Customers Say
           </h3>
-          <div className="space-y-6 max-h-[950px] overflow-y-auto pr-2">
+          <div className="space-y-6 max-h-[950px] overflow-y-visible overflow-x-visible pr-2">
             {reviews.map((r, idx) => (
               <div
                 key={idx}
-                className="bg-white p-6 rounded-xl shadow-md text-left"
+                className="bg-white p-6 rounded-xl shadow-md text-left transition transform hover:scale-105 hover:shadow-xl hover:z-10"
               >
-                <p className="text-xl  text-gray-700 italic mb-2">{r.text}</p>
+                <p className="text-xl text-gray-700 italic mb-2">{r.text}</p>
                 <p className="text-2xl font-semibold text-secondary">
                   — {r.name}
                 </p>
