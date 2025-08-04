@@ -31,7 +31,7 @@ export default function ServiceCard({
           fill
           priority
         />
-        <div className="absolute inset-0 bg-black/20 z-5 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 z-5 pointer-events-none" />
       </div>
 
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
@@ -47,7 +47,7 @@ export default function ServiceCard({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute inset-0 z-20 bg-black/60 backdrop-blur-md flex items-center justify-center p-6"
+            className="absolute inset-0 z-20 bg-black/70 backdrop-blur-md flex items-center justify-center p-6"
           >
             <div className="flex flex-col justify-center items-center w-full h-full">
               <ul className="list-disc list-inside space-y-3 text-white text-base sm:text-lg text-left max-w-[85%]">
