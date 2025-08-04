@@ -28,14 +28,29 @@ export default function Hero() {
     >
       WE&rsquo;RE DETAILERS!
     </span>,
+    <span
+      key="step1"
+      className="flex text-[14vw] sm:text-[12vw] md:text-[10vw] items-center justify-center"
+    >
+      {logo}
+    </span>,
   ];
 
   useEffect(() => {
+    if (stepIndex === steps.length - 1) return;
+
     const interval = setInterval(() => {
-      setStepIndex((prev) => (prev + 1) % steps.length);
+      setStepIndex((prev) => {
+        if (prev + 1 >= steps.length) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
     }, 2000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [stepIndex]);
 
   return (
     <section className="relative h-screen overflow-hidden text-white">
