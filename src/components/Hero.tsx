@@ -6,15 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Hero() {
   const [stepIndex, setStepIndex] = useState(0);
 
-  const logo = (
-    <img
-      src="/logo.png"
-      alt="Logo"
-      className="inline-block align-baseline opacity-90 mx-[0.05em]"
-      style={{ width: "1.3em", height: "auto" }}
-    />
-  );
-
   const steps = [
     <span
       key="step1"
@@ -28,12 +19,23 @@ export default function Hero() {
     >
       WE&rsquo;RE DETAILERS!
     </span>,
-    <span
-      key="step1"
+    <motion.span
+      key="step3"
       className="flex text-[14vw] sm:text-[12vw] md:text-[10vw] items-center justify-center"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
     >
-      {logo}
-    </span>,
+      <motion.img
+        src="/logo.png"
+        alt="Logo"
+        className="inline-block align-baseline opacity-90 mx-[0.05em]"
+        style={{ width: "1.3em", height: "auto" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ duration: 1.6, delay: 0.2 }}
+      />
+    </motion.span>,
   ];
 
   useEffect(() => {
