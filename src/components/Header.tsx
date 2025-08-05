@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
@@ -37,13 +38,20 @@ export default function Header() {
       <div className="bg-primary/60 backdrop-blur-md text-white rounded-b-2xl shadow-xl px-6 py-3">
         <div className="flex justify-between items-center max-w-6xl mx-auto">
           <Link href="/#">
-            <Image
-              src="/logo-alt.png"
-              alt="Logo"
-              width={200}
-              height={58}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2 }}
               className="rounded-full cursor-pointer"
-            />
+            >
+              <Image
+                src="/logo-alt.png"
+                alt="Logo"
+                width={200}
+                height={58}
+                className="rounded-full"
+              />
+            </motion.div>
           </Link>
           <nav className="space-x-6 text-sm sm:text-base font-medium text-secondary">
             <Link href="/gallery" className="hover:underline">
