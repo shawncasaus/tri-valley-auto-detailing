@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ImageCard from "./ImageCard";
+import ImageCardAlt from "./ImageCardAlt";
 
 export default function GalleryCollage() {
   return (
@@ -15,12 +15,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="E36 M3"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img1.jpg"
-              description1="Pristine detailing and paint correction work."
-              background="bg-primary"
-              blackText={false}
+              description="Pristine detailing and paint correction work."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -33,12 +30,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="GT3 RS"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img2.jpg"
-              description1="Track-ready shine with advanced ceramic coating."
-              background="bg-primary"
-              blackText={false}
+              description="Track-ready shine with advanced ceramic coating."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -51,12 +45,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="FD RX-7"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img3.jpg"
-              description1="Engine bay and rotary-specific cosmetic restoration."
-              background="bg-primary"
-              blackText={false}
+              description="Engine bay and rotary-specific cosmetic restoration."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -69,12 +60,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="R32 GTR"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img8.jpg"
-              description1="Iconic JDM legend brought back to glory."
-              background="bg-primary"
-              blackText={false}
+              description="Iconic JDM legend brought back to glory."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -87,12 +75,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="E46 M3"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img5.png"
-              description1="Refined interior and exterior with stage 2 polish."
-              background="bg-primary"
-              blackText={false}
+              description="Refined interior and exterior with stage 2 polish."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -105,12 +90,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="MK4 Supra"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img7.png"
-              description1="Glass-like finish with wheel brightening."
-              background="bg-primary"
-              blackText={false}
+              description="Glass-like finish with wheel brightening."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -123,12 +105,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="GR Yaris"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img6.jpg"
-              description1="Daily driven and always dialed in."
-              background="bg-primary"
-              blackText={false}
+              description="Daily driven and always dialed in."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -141,12 +120,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="911 GT3"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img9.jpg"
-              description1="Track prep and full body detail."
-              background="bg-primary"
-              blackText={false}
+              description="Track prep and full body detail."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
@@ -159,12 +135,9 @@ export default function GalleryCollage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="col-span-1"
           >
-            <ImageCard
-              title="R32 GTR"
+            <ImageCardAlt
               imageUrl="/images/collage-photos/img4.jpg"
-              description1="Iconic JDM legend brought back to glory."
-              background="bg-primary"
-              blackText={false}
+              description="Iconic JDM legend brought back to glory."
               rounded="rounded-xl"
               heightRatio={0.66}
             />
