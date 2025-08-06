@@ -23,7 +23,7 @@ export default function SectionTitle({
             isCentered ? "mx-auto" : ""
           }`}
         >
-          {subtitle}
+          &nbsp;&nbsp;&nbsp;&nbsp;{subtitle}
         </p>
       )}
     </div>

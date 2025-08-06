@@ -58,23 +58,28 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="relative min-h-screen w-full bg-white">
+    <section
+      id="contact"
+      className="relative min-h-screen w-full bg-black flex justify-center items-center py-12"
+    >
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <Image
-          src="/images/contact-background.jpg"
-          alt="Contact background"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+        <div className="relative w-full h-full">
+          <Image
+            src="/images/contact-background.jpg"
+            alt="Contact background"
+            fill
+            priority
+            className="object-cover object-bottom"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-lg" />
       </div>
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto my-8 sm:my-12 lg:my-20">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 mt-8 mb-8">
+        <div className="max-w-2xl mx-auto flex align-bottom">
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-2xl bg-offwhite p-8 rounded-xl shadow-md space-y-6 border-2 my-12"
+            className="w-full max-w-2xl bg-offwhite p-8 rounded-xl shadow-md space-y-6 border-2"
           >
             <h3 className="text-4xl font-bold text-center text-primary mb-4">
               Get In Touch

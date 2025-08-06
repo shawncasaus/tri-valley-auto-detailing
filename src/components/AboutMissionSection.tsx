@@ -3,7 +3,7 @@ import ParagraphBlock from "./ParagraphBlock";
 
 export default function AboutMissionSection() {
   return (
-    <section className="bg-white px-4 py-20">
+    <section className="bg-white">
       <div className="max-w-6xl mx-auto">
         <SectionTitle
           title="A Holistic Approach"
