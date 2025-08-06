@@ -1,9 +1,8 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 
 type ImageCardProps = {
   title: string;
@@ -11,10 +10,10 @@ type ImageCardProps = {
   description2?: string;
   imageUrl: string;
   width?: string;
-  height?: string;
   background?: string;
   blackText?: boolean;
   rounded?: string;
+  heightRatio?: number;
 };
 
 export default function ImageCard({
@@ -23,31 +22,58 @@ export default function ImageCard({
   description2,
   imageUrl,
   width = "w-full",
-  height = "h-[360px] sm:h-[500px] md:h-[600px]",
   background = "bg-white",
   blackText = true,
   rounded = "",
+  heightRatio = 0.66,
 }: ImageCardProps) {
-  const [isToggled, setIsToggled] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<string>("auto");
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (cardRef.current) {
+        const width = cardRef.current.offsetWidth;
+        setHeight(`${width * heightRatio}px`);
+      }
+    };
+
+    updateHeight();
+
+    const resizeObserver = new ResizeObserver(updateHeight);
+    if (cardRef.current) {
+      resizeObserver.observe(cardRef.current);
+    }
+
+    return () => resizeObserver.disconnect();
+  }, [heightRatio]);
 
   const textClass = blackText ? "text-gray-700" : "text-white";
 
+  const handleClick = () => {
+    if (isTouch) setIsHovered((prev) => !prev);
+  };
+
   return (
     <div
-      className={`relative ${width} ${height} ${rounded} shadow-md overflow-hidden group mb-12`}
+      ref={cardRef}
+      tabIndex={0}
+      role="button"
+      aria-label={`Preview card for ${title}. Focus or tap to animate.`}
+      className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary`}
+      style={{ height }}
+      onClick={handleClick}
+      onMouseEnter={() => !isTouch && setIsHovered(true)}
+      onMouseLeave={() => !isTouch && setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
     >
-      <button
-        onClick={() => setIsToggled((prev) => !prev)}
-        className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 p-2 rounded-full bg-white/90 hover:bg-white shadow-md"
-        aria-label="Toggle Image View"
-      >
-        <ChevronDown
-          className={`w-6 h-6 transition-transform ${
-            isToggled ? "rotate-180 text-blue-600" : "text-gray-700"
-          }`}
-        />
-      </button>
-
       <div
         className={`absolute inset-0 ${background} flex flex-col items-center justify-center p-6 text-center z-0`}
       >
@@ -68,7 +94,7 @@ export default function ImageCard({
           opacity: 1,
         }}
         animate={
-          isToggled
+          isHovered
             ? {
                 width: "6rem",
                 height: "6rem",
@@ -91,7 +117,7 @@ export default function ImageCard({
           ease: "easeOut",
           duration: 0.6,
         }}
-        className="absolute z-10 overflow-hidden ${rounded}"
+        className={`absolute z-10 overflow-hidden ${rounded}`}
         style={{ bottom: 0, left: 0 }}
       >
         <Image

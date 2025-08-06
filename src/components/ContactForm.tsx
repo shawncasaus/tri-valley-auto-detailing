@@ -74,7 +74,7 @@ export default function ContactForm() {
         <div className="max-w-2xl mx-auto my-8 sm:my-12 lg:my-20">
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-2xl bg-offwhite p-8 rounded-4xl shadow-md space-y-6 border-2 my-12"
+            className="w-full max-w-2xl bg-offwhite p-8 rounded-xl shadow-md space-y-6 border-2 my-12"
           >
             <h3 className="text-4xl font-bold text-center text-primary mb-4">
               Get In Touch
@@ -160,7 +160,7 @@ export default function ContactForm() {
             </div>
 
             <div className="space-y-4">
-              <label className="font-medium text-sm text-gray-700font-medium text-sm text-primary mt-4 mb-2">
+              <label className="font-medium text-gray-700font-medium text-sm text-primary mt-4 mb-2">
                 Availability
               </label>
               {availability.map((slot, index) => (
@@ -243,9 +243,11 @@ export default function ContactForm() {
               }
             />
 
-            <button type="submit" className="btn-primary">
-              Send Message
-            </button>
+            <div className="flex justify-left">
+              <button type="submit" className="btn-primary">
+                Send Message
+              </button>
+            </div>
 
             {status && (
               <p className="text-sm text-gray-500 text-center">{status}</p>

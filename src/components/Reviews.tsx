@@ -29,15 +29,15 @@ export default function Reviews() {
       id="reviews"
       className="py-16 bg-gray-50 px-4 sm:px-8 mx-auto overflow-hidden"
     >
-      <div className="flex flex-col md:flex-row gap-8 max-w-screen-xl mx-auto">
-        <div className="md:w-1/2 flex justify-center">
+      <div className="flex flex-col md:flex-row gap-6 w-full max-w-[1600px] mx-auto">
+        <div className="w-full md:w-1/2 flex justify-start">
           <div className="md:sticky top-28 self-start w-full h-full">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="rounded-4xl aspect-[9/16] w-full object-cover max-h-[80vh] sm:max-h-none"
+              className="rounded-xl aspect-[9/16] w-full object-cover"
             >
               <source src="/media/reviews-loop.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -45,9 +45,12 @@ export default function Reviews() {
           </div>
         </div>
 
-        <div className="md:w-1/2 flex flex-col justify-center">
-          <h3 className="text-4xl font-bold mb-6 text-center text-primary">
-            What Our Customers Say
+        <div className="w-full md:w-1/2 flex flex-col justify-start">
+          <h3 className="text-right sm:text-right text-[10vw] sm:text-6xl md:text-7xl font-bold text-primary leading-tight">
+            WHAT PEOPLE
+          </h3>
+          <h3 className="text-right sm:text-right text-[10vw] sm:text-6xl md:text-7xl font-bold mb-8 text-primary leading-tight">
+            ARE SAYING
           </h3>
           <div className="space-y-6 pr-2">
             {reviews.map((r, idx) => (
@@ -62,14 +65,16 @@ export default function Reviews() {
               </div>
             ))}
           </div>
-          <a
-            href="https://g.page/r/CbqWaHqLrLQREBM/review"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 text-center text-primary underline text-lg hover:text-primary/80 transition"
-          >
-            Read more...
-          </a>
+          <div className="flex justify-center mt-8">
+            <a
+              href="https://g.page/r/CbqWaHqLrLQREBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 text-lg font-semibold text-white bg-primary rounded-xl shadow-lg hover:bg-primary/90 hover:scale-105 transition-transform duration-300"
+            >
+              Read More Reviews →
+            </a>
+          </div>
         </div>
       </div>
     </section>

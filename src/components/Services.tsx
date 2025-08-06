@@ -15,6 +15,7 @@ export default function Services() {
         "Interior Steam Cleaning",
       ],
       imageUrl: "/images/interior.jpg",
+      rounded: "rounded-xl",
     },
     {
       title: "Exterior Detailing Services",
@@ -25,6 +26,7 @@ export default function Services() {
         "Engine bay cleaning",
       ],
       imageUrl: "/images/exterior.jpg",
+      rounded: "rounded-xl",
     },
     {
       title: "Paint Restoration Services",
@@ -35,6 +37,7 @@ export default function Services() {
         "Headlight Restoration",
       ],
       imageUrl: "/images/restoration.jpg",
+      rounded: "rounded-xl",
     },
     {
       title: "Ceramic Coating Services",
@@ -44,13 +47,20 @@ export default function Services() {
         "Bird droppings, tree sap, dirt, hard water, etc...",
       ],
       imageUrl: "/images/coating.jpg",
+      rounded: "rounded-xl",
     },
   ];
 
   return (
     <section id="services" className="py-16 bg-white text-center px-4 sm:px-8">
-      <div className="max-w-screen-xl mx-auto">
-        <h3 className="text-5xl font-bold mb-8 text-primary">Our Services</h3>
+      <div className="w-full max-w-[1600px] mx-auto">
+        {" "}
+        <h3 className="text-left sm:text-left text-[10vw] sm:text-6xl md:text-7xl font-bold text-primary leading-tight">
+          OUR
+        </h3>
+        <h3 className="text-left sm:text-left text-[10vw] sm:text-6xl md:text-7xl font-bold mb-8 text-primary leading-tight">
+          SERVICES
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {services.map((service, i) => (
             <motion.div
@@ -59,6 +69,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.6, delay: i * 0.1, ease: "anticipate" }}
               viewport={{ once: true }}
+              className="w-full"
             >
               <ServiceCard {...service} />
             </motion.div>

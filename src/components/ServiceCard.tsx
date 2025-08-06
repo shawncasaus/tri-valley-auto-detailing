@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -8,20 +8,37 @@ type ServiceCardProps = {
   title: string;
   points: string[];
   imageUrl: string;
+  rounded?: string;
 };
 
 export default function ServiceCard({
   title,
   points,
   imageUrl,
+  rounded = "rounded-none",
 }: ServiceCardProps) {
-  const [hovered, setHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const toggleOverlay = () => {
+    if (isTouch) setIsHovered((prev) => !prev);
+  };
 
   return (
     <div
-      className="relative p-0 m-2 rounded-2xl shadow-sm overflow-hidden flex flex-col justify-end min-h-[300px] sm:min-h-[340px] cursor-pointer group"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      tabIndex={0}
+      role="button"
+      aria-label={`Service card for ${title}. Tap, hover or focus to reveal more.`}
+      className={`relative w-full aspect-[3/2] m-2 shadow-sm overflow-hidden flex flex-col justify-end cursor-pointer group ${rounded} outline-none focus:ring-2 focus:ring-primary`}
+      onClick={toggleOverlay}
+      onMouseEnter={() => !isTouch && setIsHovered(true)}
+      onMouseLeave={() => !isTouch && setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -31,9 +48,10 @@ export default function ServiceCard({
           fill
           priority
         />
-        <div className="absolute inset-0 bg-black/40 z-5 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/50 z-5 pointer-events-none" />
       </div>
 
+      {/* Title */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <h4 className="text-3xl sm:text-4xl font-semibold text-offwhite drop-shadow-md text-center px-4">
           {title}
@@ -41,7 +59,7 @@ export default function ServiceCard({
       </div>
 
       <AnimatePresence>
-        {hovered && (
+        {isHovered && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
