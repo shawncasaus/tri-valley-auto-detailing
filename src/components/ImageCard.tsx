@@ -75,12 +75,22 @@ export default function ImageCard({
       onBlur={() => setIsHovered(false)}
     >
       <div
-        className={`absolute inset-0 ${background} flex flex-col items-center justify-center p-6 text-center z-0`}
+        className={`absolute inset-0 ${background} flex flex-col items-center justify-center p-4 sm:p-6 text-center z-0`}
       >
-        <h2 className={`text-3xl font-bold m-4 ${textClass}`}>{title}</h2>
-        <p className={`text-sm max-w-xl mb-2 ${textClass}`}>{description1}</p>
+        <h2
+          className={`text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 ${textClass}`}
+        >
+          {title}
+        </h2>
+        <p
+          className={`text-xs sm:text-sm max-w-sm sm:max-w-xl mb-1 sm:mb-2 ${textClass}`}
+        >
+          {description1}
+        </p>
         {description2 && (
-          <p className={`text-sm max-w-xl ${textClass}`}>{description2}</p>
+          <p className={`text-xs sm:text-sm max-w-sm sm:max-w-xl ${textClass}`}>
+            {description2}
+          </p>
         )}
       </div>
 
