@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -10,6 +10,7 @@ type ImageCardAltProps = {
   width?: string;
   rounded?: string;
   heightRatio?: number;
+  isTall?: boolean;
 };
 
 export default function ImageCardAlt({
@@ -18,11 +19,18 @@ export default function ImageCardAlt({
   width = "w-full",
   rounded = "",
   heightRatio = 0.66,
+  isTall = false,
 }: ImageCardAltProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<string>("auto");
   const [isHovered, setIsHovered] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
+
+  // effective ratio: double when tall
+  const effectiveRatio = useMemo(
+    () => heightRatio * (isTall ? 2 : 1),
+    [heightRatio, isTall],
+  );
 
   useEffect(() => {
     setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
@@ -31,20 +39,18 @@ export default function ImageCardAlt({
   useEffect(() => {
     const updateHeight = () => {
       if (cardRef.current) {
-        const width = cardRef.current.offsetWidth;
-        setHeight(`${width * heightRatio}px`);
+        const w = cardRef.current.offsetWidth;
+        setHeight(`${w * effectiveRatio}px`);
       }
     };
 
     updateHeight();
 
     const resizeObserver = new ResizeObserver(updateHeight);
-    if (cardRef.current) {
-      resizeObserver.observe(cardRef.current);
-    }
+    if (cardRef.current) resizeObserver.observe(cardRef.current);
 
     return () => resizeObserver.disconnect();
-  }, [heightRatio]);
+  }, [effectiveRatio]);
 
   const handleClick = () => {
     if (isTouch) setIsHovered((prev) => !prev);
@@ -55,7 +61,7 @@ export default function ImageCardAlt({
       ref={cardRef}
       tabIndex={0}
       role="button"
-      aria-label={`Focus or tap to animate.`}
+      aria-label="Focus or tap to animate."
       className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary`}
       style={{ height }}
       onClick={handleClick}
@@ -76,7 +82,7 @@ export default function ImageCardAlt({
         initial={{ y: "100%" }}
         animate={{ y: isHovered ? "0%" : "100%" }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.4 }}
-        className={`absolute left-0 bottom-0 w-full h-1/3 bg-black/60 bg-opacity-90 text-white px-4 py-3 flex flex-col justify-center text-start z-20`}
+        className="absolute left-0 bottom-0 w-full h-1/3 bg-black/60 bg-opacity-90 text-white px-4 py-3 flex flex-col justify-center text-start z-20"
       >
         <p className="text-sm mt-1">{description}</p>
       </motion.div>

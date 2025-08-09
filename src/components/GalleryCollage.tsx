@@ -142,6 +142,150 @@ export default function GalleryCollage() {
               heightRatio={0.66}
             />
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img10.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img11.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img12.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img13.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img14.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img15.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img16.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img17.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="col-span-1"
+          >
+            <ImageCardAlt
+              imageUrl="/images/collage-photos/img18.jpg"
+              description="Iconic JDM legend brought back to glory."
+              rounded="rounded-xl"
+              heightRatio={0.66}
+              isTall
+            />
+          </motion.div>
         </div>
       </div>
     </section>
