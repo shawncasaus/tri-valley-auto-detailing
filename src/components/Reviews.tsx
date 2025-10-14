@@ -67,7 +67,7 @@ export default function Reviews() {
           </div>
           <div className="flex justify-center mt-8">
             <a
-              href="https://g.page/r/CbqWaHqLrLQREBM/review"
+              href="https://share.google/N22GuA5GCeECgJqfC"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 text-lg font-semibold text-white bg-primary rounded-xl shadow-lg hover:bg-primary/90 hover:scale-105 transition-transform duration-300"
