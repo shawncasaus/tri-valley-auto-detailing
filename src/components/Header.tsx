@@ -9,7 +9,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full z-50">
       <div className="bg-primary/80 backdrop-blur-md text-white rounded-b-xl shadow-xl px-6 py-4">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center max-w-6xl mx-auto gap-2 sm:gap-0">
-          <Link href="/#" className="mx-auto sm:mx-0">
+          <Link href="/" className="mx-auto sm:mx-0">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -33,7 +33,7 @@ export default function Header() {
             <Link href="/about" className="hover:underline">
               About
             </Link>
-            <Link href="/#contact" className="hover:underline">
+            <Link href="#contact" className="hover:underline">
               Contact
             </Link>
           </nav>

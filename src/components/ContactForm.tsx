@@ -72,7 +72,7 @@ export default function ContactForm() {
           vehicle: "",
           description: "",
         });
-        setAvailability([]);
+        setAvailability([{ day: "", start: "", end: "" }]); // Reset to default slot
       } else {
         setStatus(data.error || "Failed to send message. Please try again.");
       }
@@ -190,7 +190,7 @@ export default function ContactForm() {
             </div>
 
             <div className="space-y-4">
-              <label className="font-medium text-gray-700font-medium text-sm text-primary mt-4 mb-2">
+              <label className="font-medium text-sm text-primary mt-4 mb-2">
                 Availability
               </label>
               {availability.map((slot, index) => (
