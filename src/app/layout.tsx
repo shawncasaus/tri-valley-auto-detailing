@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import GlobalErrorHandler from "@/components/GlobalErrorHandler";
 
 export const metadata: Metadata = {
   title: {
@@ -176,9 +178,12 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-black">
         <SmoothScroll />
-        <Header />
-        {children}
-        <Footer />
+        <GlobalErrorHandler />
+        <ErrorBoundary>
+          <Header />
+          {children}
+          <Footer />
+        </ErrorBoundary>
       </body>
     </html>
   );
