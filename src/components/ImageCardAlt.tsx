@@ -60,22 +60,29 @@ export default function ImageCardAlt({
     <div
       ref={cardRef}
       tabIndex={0}
-      role="button"
-      aria-label="Focus or tap to animate."
-      className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary`}
+      role="img"
+      aria-label={`Auto detailing work image: ${description}`}
+      className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
       style={{ height }}
       onClick={handleClick}
       onMouseEnter={() => !isTouch && setIsHovered(true)}
       onMouseLeave={() => !isTouch && setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
     >
       <Image
         src={imageUrl}
-        alt={description}
+        alt={`Auto detailing work showing ${description.toLowerCase()}`}
         fill
         priority
         className="object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
 
       <motion.div
@@ -83,6 +90,7 @@ export default function ImageCardAlt({
         animate={{ y: isHovered ? "0%" : "100%" }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.4 }}
         className="absolute left-0 bottom-0 w-full h-1/3 bg-black/60 bg-opacity-90 text-white px-4 py-3 flex flex-col justify-center text-start z-20"
+        aria-hidden="true"
       >
         <p className="text-sm mt-1">{description}</p>
       </motion.div>

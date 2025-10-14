@@ -64,18 +64,25 @@ export default function ImageCard({
     <div
       ref={cardRef}
       tabIndex={0}
-      role="button"
-      aria-label={`Preview card for ${title}. Focus or tap to animate.`}
-      className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary`}
+      role="img"
+      aria-label={`${title} auto detailing showcase. Focus or tap to animate image.`}
+      className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
       style={{ height }}
       onClick={handleClick}
       onMouseEnter={() => !isTouch && setIsHovered(true)}
       onMouseLeave={() => !isTouch && setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
     >
       <div
         className={`absolute inset-0 ${background} flex flex-col items-center justify-center p-4 sm:p-6 text-center z-0`}
+        aria-hidden="true"
       >
         <h2
           className={`text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 ${textClass}`}
@@ -132,10 +139,11 @@ export default function ImageCard({
       >
         <Image
           src={imageUrl}
-          alt={title}
+          alt={`${title} auto detailing work - ${description1}`}
           fill
           className="object-cover"
           priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </motion.div>
     </div>

@@ -179,9 +179,20 @@ export default function RootLayout({
       <body className="bg-white text-black">
         <SmoothScroll />
         <GlobalErrorHandler />
+        
+        {/* Skip to main content link for keyboard users */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-4 py-2 rounded-lg z-50 focus:outline-none focus:ring-2 focus:ring-white"
+        >
+          Skip to main content
+        </a>
+        
         <ErrorBoundary>
           <Header />
-          {children}
+          <main id="main-content">
+            {children}
+          </main>
           <Footer />
         </ErrorBoundary>
       </body>
