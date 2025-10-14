@@ -24,7 +24,7 @@ export default function ContactForm() {
   };
 
   const [status, setStatus] = useState("");
-  const [availability, setAvailability] = useState<AvailabilitySlot[]>([]);
+  const [availability, setAvailability] = useState<AvailabilitySlot[]>([{ day: "", start: "", end: "" }]);
 
   const updateSlot = (
     index: number,
@@ -48,13 +48,38 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("Sending...");
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, availability }),
+      });
 
-    setStatus(res.ok ? "Sent!" : "Failed to send.");
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus(data.message || "Message sent successfully!");
+        // Reset form on successful submission
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          street: "",
+          city: "",
+          state: "",
+          zip: "",
+          vehicle: "",
+          description: "",
+        });
+        setAvailability([]);
+      } else {
+        setStatus(data.error || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("Network error. Please check your connection and try again.");
+    }
   };
 
   return (
@@ -255,7 +280,15 @@ export default function ContactForm() {
             </div>
 
             {status && (
-              <p className="text-sm text-gray-500 text-center">{status}</p>
+              <p className={`text-sm text-center p-3 rounded-lg ${
+                status.includes("Thank you") || status.includes("successfully") 
+                  ? "text-green-600 bg-green-50 border border-green-200" 
+                  : status.includes("Sending") 
+                  ? "text-blue-600 bg-blue-50 border border-blue-200"
+                  : "text-red-600 bg-red-50 border border-red-200"
+              }`}>
+                {status}
+              </p>
             )}
           </form>
         </div>
