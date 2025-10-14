@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
   const [stepIndex, setStepIndex] = useState(0);
+  const [showCallToAction, setShowCallToAction] = useState(false);
 
   const steps = [
     <span
@@ -14,7 +15,7 @@ export default function Hero() {
       WE&rsquo;RE MORE THAN A CAR WASH...
     </span>,
     <span
-      key="step5"
+      key="step2"
       className="flex text-[10vw] sm:text-[8vw] md:text-[6vw] items-center justify-center"
     >
       WE&rsquo;RE DETAILERS!
@@ -39,7 +40,14 @@ export default function Hero() {
   ];
 
   useEffect(() => {
-    if (stepIndex === steps.length - 1) return;
+    if (stepIndex === steps.length - 1) {
+      // Show call-to-action after logo appears and stays for 3 seconds
+      const timer = setTimeout(() => {
+        setShowCallToAction(true);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    }
 
     const interval = setInterval(() => {
       setStepIndex((prev) => {
@@ -52,7 +60,7 @@ export default function Hero() {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [stepIndex]);
+  }, [stepIndex, steps.length]);
 
   return (
     <section className="relative h-screen overflow-hidden text-white">
@@ -80,6 +88,36 @@ export default function Hero() {
             >
               {steps[stepIndex]}
             </motion.h1>
+          </AnimatePresence>
+          
+          {/* Call to Action */}
+          <AnimatePresence>
+            {showCallToAction && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+              >
+                <motion.a
+                  href="#contact"
+                  className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Book Your Detail Today
+                </motion.a>
+                <motion.a
+                  href="/gallery"
+                  className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-black px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  View Our Work
+                </motion.a>
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
       </div>
