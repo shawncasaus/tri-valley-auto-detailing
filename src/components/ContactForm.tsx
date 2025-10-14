@@ -85,7 +85,7 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="relative min-h-screen w-full bg-black flex justify-center items-center py-12"
+      className="relative min-h-screen w-full bg-black flex justify-center items-center py-4 sm:py-12"
       aria-labelledby="contact-heading"
     >
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -102,16 +102,16 @@ export default function ContactForm() {
         <div className="absolute inset-0 bg-black/80 backdrop-blur-lg" />
       </div>
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 mt-8 mb-8">
-        <div className="max-w-2xl mx-auto flex align-bottom">
+      <div className="relative z-10 px-2 sm:px-4 lg:px-8 w-full h-full flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto">
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-2xl bg-offwhite p-8 rounded-xl shadow-md space-y-6 border-2"
+            className="w-full bg-offwhite p-3 sm:p-6 lg:p-8 rounded-xl shadow-md space-y-3 sm:space-y-6 border-2 min-h-[90vh] sm:min-h-auto flex flex-col justify-center"
             role="form"
             aria-labelledby="contact-heading"
             noValidate
           >
-            <h2 id="contact-heading" className="text-4xl font-bold text-center text-primary mb-4">
+            <h2 id="contact-heading" className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center text-primary mb-3 sm:mb-4">
               Get In Touch
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -122,7 +122,7 @@ export default function ContactForm() {
                   type="text"
                   required
                   placeholder="First Name"
-                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg w-full"
+                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 sm:p-3 rounded-2xl bg-white shadow-lg w-full text-base"
                   value={form.firstName}
                   onChange={(e) =>
                     setForm({ ...form, firstName: e.target.value })
@@ -137,7 +137,7 @@ export default function ContactForm() {
                   type="text"
                   required
                   placeholder="Last Name"
-                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg w-full"
+                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 sm:p-3 rounded-2xl bg-white shadow-lg w-full text-base"
                   value={form.lastName}
                   onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                   aria-describedby="lastName-error"
@@ -153,7 +153,7 @@ export default function ContactForm() {
                   type="email"
                   required
                   placeholder="Email"
-                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg w-full"
+                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 sm:p-3 rounded-2xl bg-white shadow-lg w-full text-base"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   aria-describedby="email-error"
@@ -165,7 +165,7 @@ export default function ContactForm() {
                   id="phone"
                   type="tel"
                   placeholder="Phone Number"
-                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 rounded-2xl bg-white shadow-lg w-full"
+                  className="border-primary border-focus-secondary focus:ring-0 focus:outline-none p-3 sm:p-3 rounded-2xl bg-white shadow-lg w-full text-base"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   aria-describedby="phone-error"
@@ -350,7 +350,7 @@ export default function ContactForm() {
             <div className="flex justify-left">
               <button 
                 type="submit" 
-                className="btn-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="btn-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 w-full sm:w-auto min-h-[44px] text-base sm:text-lg py-3 sm:py-2"
                 aria-describedby="submit-status"
               >
                 Send Message

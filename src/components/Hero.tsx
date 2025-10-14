@@ -75,8 +75,8 @@ export default function Hero() {
         Your browser does not support the video tag.
       </video>
 
-      <div className="relative z-10 flex h-full backdrop-blur-sm backdrop-brightness-75 bg-black/60 items-center justify-center px-6 py-12">
-        <div className="w-full max-w-7xl text-center sm:text-left">
+      <div className="relative z-10 flex h-full backdrop-blur-sm backdrop-brightness-75 bg-black/60 items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
+        <div className="w-full max-w-7xl text-center">
           <AnimatePresence mode="wait">
             <motion.h1
               key={stepIndex}
@@ -98,11 +98,11 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+                className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
               >
                 <motion.a
                   href="#contact"
-                  className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -110,7 +110,7 @@ export default function Hero() {
                 </motion.a>
                 <motion.a
                   href="/gallery"
-                  className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-black px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+                  className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
