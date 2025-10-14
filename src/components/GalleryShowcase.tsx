@@ -23,8 +23,8 @@ export default function GalleryShowcase() {
           <ImageCard
             title="E36 M3"
             imageUrl="/images/showcase.jpg"
-            description1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae leo eu nulla gravida tincidunt. Curabitur tincidunt, odio sit amet pretium varius, lacus sem euismod nulla, sit amet dignissim tortor nulla a est."
-            description2="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas fringilla, nibh sed pulvinar cursus, enim arcu vestibulum est, non condimentum purus sapien a erat."
+            description1="This classic BMW E36 M3 received our premium paint correction and ceramic coating treatment. The vehicle's original Estoril Blue paint was meticulously restored to its former glory, removing years of oxidation and swirl marks."
+            description2="Our multi-stage paint correction process brought back the deep, rich color that makes this iconic sports car truly shine. The ceramic coating provides long-lasting protection while enhancing the paint's depth and clarity."
             background="bg-[#1E1A19]"
             blackText={false}
             rounded="rounded-xl"

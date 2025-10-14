@@ -21,7 +21,7 @@ export default function AboutPage() {
         >
           <ImageCardAlt
             imageUrl="/images/about-photo.jpg"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae leo eu nulla gravida tincidunt. Curabitur tincidunt, odio sit amet pretium varius, lacus sem euismod nulla, sit amet dignissim tortor nulla a est."
+            description="Our experienced team brings years of expertise in automotive detailing, using premium products and advanced techniques to restore your vehicle to showroom condition. We're passionate about delivering exceptional results that exceed your expectations."
             rounded="rounded-xl"
             heightRatio={0.66}
           />
