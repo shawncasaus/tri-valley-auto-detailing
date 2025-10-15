@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import GlobalErrorHandler from "@/components/GlobalErrorHandler";
+import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 export const metadata: Metadata = {
   title: {
@@ -176,9 +177,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-white text-black">
-        <SmoothScroll />
-        <GlobalErrorHandler />
+          <body className="bg-white text-black">
+            <SmoothScroll />
+            <GlobalErrorHandler />
+            <PerformanceMonitor />
         
         {/* Skip to main content link for keyboard users */}
         <a 

@@ -14,7 +14,7 @@ export default function Services() {
         "Carpet and upholstery stain removal",
         "Interior Steam Cleaning",
       ],
-      imageUrl: "/images/interior.jpg",
+      imageUrl: "/images/interior-optimized.jpg",
       rounded: "rounded-xl",
     },
     {
@@ -36,7 +36,7 @@ export default function Services() {
         "Paint correction",
         "Headlight Restoration",
       ],
-      imageUrl: "/images/restoration.jpg",
+      imageUrl: "/images/restoration-optimized.jpg",
       rounded: "rounded-xl",
     },
     {
@@ -46,7 +46,7 @@ export default function Services() {
         "Protects paint from whatever nature throws at it",
         "Bird droppings, tree sap, dirt, hard water, etc...",
       ],
-      imageUrl: "/images/coating.jpg",
+      imageUrl: "/images/coating-optimized.jpg",
       rounded: "rounded-xl",
     },
   ];

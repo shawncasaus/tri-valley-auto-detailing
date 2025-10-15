@@ -94,9 +94,9 @@ export default function ContactForm() {
             src="/images/contact-background.jpg"
             alt=""
             fill
-            priority
+            loading="lazy"
             className="object-cover object-bottom"
-            role="presentation"
+            sizes="100vw"
           />
         </div>
         <div className="absolute inset-0 bg-black/80 backdrop-blur-lg" />

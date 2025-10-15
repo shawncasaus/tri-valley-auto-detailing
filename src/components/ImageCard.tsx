@@ -142,7 +142,7 @@ export default function ImageCard({
           alt={`${title} auto detailing work - ${description1}`}
           fill
           className="object-cover"
-          priority
+          loading="lazy"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </motion.div>

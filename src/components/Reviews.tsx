@@ -37,9 +37,10 @@ export default function Reviews() {
               muted
               loop
               playsInline
+              preload="metadata"
               className="rounded-xl aspect-[9/16] w-full object-cover"
             >
-              <source src="/media/reviews-loop.mp4" type="video/mp4" />
+                     <source src="/media/reviews-loop-compressed.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

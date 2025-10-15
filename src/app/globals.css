@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Reduce CSS animations on mobile for better performance (but not Framer Motion) */
+  .animate-bounce,
+  .animate-pulse,
+  .animate-spin {
+    animation-duration: 0.3s !important;
+  }
+  
+  /* Reduce CSS transitions on mobile (but not Framer Motion) */
+  .transition-all,
+  .transition-colors,
+  .transition-opacity,
+  .transition-transform {
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Optimize video rendering on mobile */
+  video {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  /* Reduce blur effects on mobile for better performance */
+  .backdrop-blur-md {
+    backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur-lg {
+    backdrop-filter: blur(8px);
+  }
+}
+
 :root {
     --background: #0a0a0a;
     --foreground: #ededed;

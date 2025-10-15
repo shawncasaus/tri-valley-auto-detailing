@@ -60,7 +60,7 @@ export default function Hero() {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [stepIndex, steps.length]);
+  }, [stepIndex]);
 
   return (
     <section className="relative h-screen overflow-hidden text-white">
@@ -69,9 +69,10 @@ export default function Hero() {
         muted
         loop
         playsInline
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover opacity-80"
       >
-        <source src="/media/hero-loop.mp4" type="video/mp4" />
+               <source src="/media/hero-loop-compressed.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
