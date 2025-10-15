@@ -60,7 +60,7 @@ export default function Hero() {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [stepIndex]);
+  }, [stepIndex, steps.length]);
 
   return (
     <section className="relative h-screen overflow-hidden text-white">

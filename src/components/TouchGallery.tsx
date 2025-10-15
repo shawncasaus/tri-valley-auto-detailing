@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { motion, PanInfo } from "framer-motion";
 import ImageCardAlt from "./ImageCardAlt";
 
 interface GalleryImage {
@@ -19,7 +19,6 @@ interface TouchGalleryProps {
 export default function TouchGallery({ images, className = "" }: TouchGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export default function TouchGallery({ images, className = "" }: TouchGalleryPro
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleDragEnd = (event: any, info: PanInfo) => {
+  const handleDragEnd = (event: unknown, info: PanInfo) => {
     const threshold = 50;
     const velocity = info.velocity.x;
     const offset = info.offset.x;
