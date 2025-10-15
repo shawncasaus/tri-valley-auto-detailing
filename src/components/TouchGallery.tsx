@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, PanInfo } from "framer-motion";
 import ImageCardAlt from "./ImageCardAlt";
+import { GallerySkeleton, MobileCarouselSkeleton } from "./SkeletonLoaders";
+import { useLoadingState, useMobileDetection } from "@/hooks/useLoadingStates";
 
 interface GalleryImage {
   imageUrl: string;
@@ -18,18 +20,9 @@ interface TouchGalleryProps {
 
 export default function TouchGallery({ images, className = "" }: TouchGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useMobileDetection();
+  const { isLoading } = useLoadingState({ delay: 800 });
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const handleDragEnd = (event: unknown, info: PanInfo) => {
     const threshold = 50;
@@ -58,6 +51,21 @@ export default function TouchGallery({ images, className = "" }: TouchGalleryPro
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <section className={`px-4 sm:px-8 py-8 mb-32 w-full ${className}`}>
+        <div className="w-full max-w-[1920px] mx-auto">
+          {isMobile ? (
+            <MobileCarouselSkeleton />
+          ) : (
+            <GallerySkeleton count={images.length} />
+          )}
+        </div>
+      </section>
+    );
+  }
 
   // Desktop grid view
   if (!isMobile) {

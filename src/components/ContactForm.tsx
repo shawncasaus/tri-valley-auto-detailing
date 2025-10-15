@@ -24,6 +24,7 @@ export default function ContactForm() {
   };
 
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [availability, setAvailability] = useState<AvailabilitySlot[]>([{ day: "", start: "", end: "" }]);
 
   const updateSlot = (
@@ -46,6 +47,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setStatus("Sending...");
 
     try {
@@ -79,6 +81,8 @@ export default function ContactForm() {
     } catch (error) {
       console.error("Form submission error:", error);
       setStatus("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -347,15 +351,23 @@ export default function ContactForm() {
               />
             </div>
 
-            <div className="flex justify-left">
-              <button 
-                type="submit" 
-                className="btn-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 w-full sm:w-auto min-h-[44px] text-base sm:text-lg py-3 sm:py-2"
-                aria-describedby="submit-status"
-              >
-                Send Message
-              </button>
-            </div>
+                   <div className="flex justify-left">
+                     <button 
+                       type="submit" 
+                       disabled={isSubmitting}
+                       className="btn-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 w-full sm:w-auto min-h-[44px] text-base sm:text-lg py-3 sm:py-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                       aria-describedby="submit-status"
+                     >
+                       {isSubmitting ? (
+                         <>
+                           <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                           Sending...
+                         </>
+                       ) : (
+                         "Send Message"
+                       )}
+                     </button>
+                   </div>
 
             {status && (
               <div 
