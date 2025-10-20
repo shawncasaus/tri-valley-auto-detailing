@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Hero() {
   const [stepIndex, setStepIndex] = useState(0);
   const [showCallToAction, setShowCallToAction] = useState(false);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
 
   const steps = [
     <span
@@ -62,6 +63,19 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [stepIndex, steps.length]);
 
+  const handlePhoneClick = () => {
+    // Check if it's a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // On mobile, open the phone dialer
+      window.location.href = 'tel:+19252626058';
+    } else {
+      // On desktop, show modal
+      setShowPhoneModal(true);
+    }
+  };
+
   return (
     <section className="relative h-screen overflow-hidden text-white">
       <video
@@ -99,11 +113,11 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+                className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-3 sm:gap-4"
               >
                 <motion.a
                   href="#contact"
-                  className="bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
+                  className="bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full max-w-xs text-center min-h-[44px] flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -111,12 +125,20 @@ export default function Hero() {
                 </motion.a>
                 <motion.a
                   href="/gallery"
-                  className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
+                  className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 w-full max-w-xs text-center min-h-[44px] flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   View Our Work
                 </motion.a>
+                <motion.button
+                  onClick={handlePhoneClick}
+                  className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full max-w-xs text-center min-h-[44px] flex items-center justify-center"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  📞 Call Now
+                </motion.button>
               </motion.div>
             )}
           </AnimatePresence>
@@ -126,6 +148,48 @@ export default function Hero() {
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce text-offwhite text-xl">
         ↓
       </div>
+
+      {/* Phone Modal */}
+      <AnimatePresence>
+        {showPhoneModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            onClick={() => setShowPhoneModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-xl p-8 max-w-md w-full text-center shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-6xl mb-4">📞</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Call Us Now!</h3>
+              <p className="text-gray-600 mb-6">Ready to book your detail? Give us a call!</p>
+              <div className="bg-gray-100 rounded-lg p-4 mb-6">
+                <p className="text-lg font-semibold text-gray-900">(925) 262-6058</p>
+              </div>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowPhoneModal(false)}
+                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-semibold transition-colors"
+                >
+                  Close
+                </button>
+                <a
+                  href="tel:+19252626058"
+                  className="flex-1 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-center"
+                >
+                  Call Now
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -31,6 +31,7 @@ export default function ImageCard({
   const [height, setHeight] = useState<string>("auto");
   const [isHovered, setIsHovered] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
@@ -57,7 +58,7 @@ export default function ImageCard({
   const textClass = blackText ? "text-gray-700" : "text-white";
 
   const handleClick = () => {
-    if (isTouch) setIsHovered((prev) => !prev);
+    setIsClicked((prev) => !prev);
   };
 
   return (
@@ -66,11 +67,11 @@ export default function ImageCard({
       tabIndex={0}
       role="img"
       aria-label={`${title} auto detailing showcase. Focus or tap to animate image.`}
-      className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
+      className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}
       style={{ height }}
       onClick={handleClick}
-      onMouseEnter={() => !isTouch && setIsHovered(true)}
-      onMouseLeave={() => !isTouch && setIsHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
       onKeyDown={(e) => {
@@ -101,6 +102,24 @@ export default function ImageCard({
         )}
       </div>
 
+      {/* Click indicator overlay */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 0.1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 bg-white z-20 pointer-events-none"
+      />
+      
+      {/* Click hint text */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+        transition={{ duration: 0.3 }}
+        className="absolute top-4 right-4 z-30 bg-black bg-opacity-70 text-white px-3 py-1 rounded-full text-xs font-medium pointer-events-none"
+      >
+        Click to animate
+      </motion.div>
+
       <motion.div
         initial={{
           width: "100%",
@@ -111,7 +130,7 @@ export default function ImageCard({
           opacity: 1,
         }}
         animate={
-          isHovered
+          isClicked
             ? {
                 width: "6rem",
                 height: "6rem",

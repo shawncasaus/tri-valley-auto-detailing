@@ -107,7 +107,7 @@ export default function RootLayout({
               "url": "https://trivalleyautodetailing.com",
               "logo": "https://trivalleyautodetailing.com/logo.png",
               "image": "https://trivalleyautodetailing.com/images/showcase.jpg",
-              "telephone": "+1-XXX-XXX-XXXX", // Replace with actual phone
+              "telephone": "+1-925-262-6058",
               "email": "info@trivalleyautodetailing.com", // Replace with actual email
               "address": {
                 "@type": "PostalAddress",
