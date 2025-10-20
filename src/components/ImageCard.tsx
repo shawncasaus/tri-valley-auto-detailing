@@ -30,12 +30,7 @@ export default function ImageCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<string>("auto");
   const [isHovered, setIsHovered] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-
-  useEffect(() => {
-    setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
-  }, []);
 
   useEffect(() => {
     const updateHeight = () => {
