@@ -24,17 +24,13 @@ export default function ImageCardAlt({
   const cardRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<string>("auto");
   const [isHovered, setIsHovered] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   // effective ratio: double when tall
   const effectiveRatio = useMemo(
     () => heightRatio * (isTall ? 2 : 1),
     [heightRatio, isTall],
   );
-
-  useEffect(() => {
-    setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
-  }, []);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -53,8 +49,7 @@ export default function ImageCardAlt({
   }, [effectiveRatio]);
 
   const handleClick = () => {
-    // Only handle clicks on desktop (non-touch devices)
-    if (!isTouch) setIsHovered((prev) => !prev);
+    setIsClicked((prev) => !prev);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -73,10 +68,10 @@ export default function ImageCardAlt({
       className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
       style={{ height }}
       onClick={handleClick}
-      onMouseEnter={() => !isTouch && setIsHovered(true)}
-      onMouseLeave={() => !isTouch && setIsHovered(false)}
-      onFocus={() => !isTouch && setIsHovered(true)}
-      onBlur={() => !isTouch && setIsHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
       onKeyDown={handleKeyDown}
     >
       <Image
@@ -91,7 +86,7 @@ export default function ImageCardAlt({
       <motion.div
         initial={{ y: "100%" }}
         animate={{ 
-          y: isTouch ? "0%" : (isHovered ? "0%" : "100%")
+          y: isClicked ? "0%" : "100%"
         }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.4 }}
         className="absolute left-0 bottom-0 w-full h-1/3 bg-black/60 bg-opacity-90 text-white px-4 py-3 flex flex-col justify-center text-start z-20"

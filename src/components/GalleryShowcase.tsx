@@ -9,7 +9,7 @@ export default function GalleryShowcase() {
         <section className="mb-12 w-full">
             <div className="flex flex-col md:flex-row gap-8 max-w-[1600px] mx-auto items-stretch">
                 <div className="w-full md:w-1/3 flex items-center justify-center bg-white ">
-                    <TextHero className="text-left whitespace-pre-line text-6xl sm:text-7xl leading-tight">
+                    <TextHero className="text-left whitespace-pre-line text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
                         {"A CURATED\nGLIMPSE\nINTO\nOUR\nCRAFT"}
                     </TextHero>
                 </div>

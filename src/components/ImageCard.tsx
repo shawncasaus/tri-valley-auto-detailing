@@ -81,12 +81,12 @@ export default function ImageCard({
                 aria-hidden="true"
             >
                 <h2
-                    className={`text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 ${textClass}`}
+                    className={`text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-4 ${textClass}`}
                 >
                     {title}
                 </h2>
                 <p
-                    className={`text-lg xs:text-sm max-w-sm sm:max-w-xl mb-1 sm:mb-2 ${textClass}`}
+                    className={`text-xs sm:text-sm max-w-sm sm:max-w-xl mb-1 sm:mb-2 ${textClass}`}
                 >
                     {description1}
                 </p>
