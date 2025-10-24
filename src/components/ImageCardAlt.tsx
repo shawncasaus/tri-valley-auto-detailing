@@ -23,7 +23,6 @@ export default function ImageCardAlt({
 }: ImageCardAltProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<string>("auto");
-  const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   // effective ratio: double when tall
@@ -68,10 +67,6 @@ export default function ImageCardAlt({
       className={`relative ${width} ${rounded} shadow-md overflow-hidden group outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
       style={{ height }}
       onClick={handleClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onFocus={() => setIsHovered(true)}
-      onBlur={() => setIsHovered(false)}
       onKeyDown={handleKeyDown}
     >
       <Image
